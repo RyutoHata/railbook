@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Railbook::Application.config.secret_key_base = 'f39f3a47a6f445f2fc62a2a8c3c03a518a5c620b0e1f33e8162bbfd35d5edbaadb8dfaf12ded4af4668b18e6087fcddabd0c1c2b654c7d272c3bf73fbc94ef36'
+Railbook::Application.config.secret_key_base = '69e1bc5e0c5dc1cf61f2e6c19914bad80e7c22c58e6a1be26d8cd820b6ca04a51f0cfb5aea637b50c669671a501b2f41ea37840651e0807dc6cee6d072d5af9b'
