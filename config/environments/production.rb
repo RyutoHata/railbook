@@ -1,6 +1,8 @@
 Railbook::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+config.assets.compress = true
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 
@@ -11,7 +13,7 @@ Railbook::Application.configure do
   config.eager_load = true
 
   # Full error reports are disabled and caching is turned on.
-  config.consider_all_requests_local       = false
+  config.consider_all_requests_local       = true 
   config.action_controller.perform_caching = true
 
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
@@ -20,7 +22,7 @@ Railbook::Application.configure do
   # config.action_dispatch.rack_cache = true
 
   # Disable Rails's static asset server (Apache or nginx will already do this).
-  config.serve_static_assets = false
+  # config.serve_static_assets = false
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
@@ -64,6 +66,16 @@ Railbook::Application.configure do
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.examples.com',
+    port: 587,
+    user_name: 'hogehoge',
+    password: 'secret',
+    domain: 'examples.com'
+  }
+   config.action_mailer.default_url_options = { host: 'localhost:3000' }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation can not be found).
