@@ -10,7 +10,7 @@ class Book < ActiveRecord::Base
   has_many :reviews
   has_and_belongs_to_many :authors
   has_many :users, through: :reviews
-  #has_many :memos, as: :memoable
+  has_many :memos, as: :memoable
 
 
 
@@ -60,7 +60,7 @@ end
 
   # after_destroy :history_book
   # after_destroy :history_book, unless: Proc.new { |b| b.publish == "unknown" }
-  # after_destroy BookCallbacks.new
+  after_destroy BookCallbacks.new
 
   # after_destroy do |b|
   #   logger.info('deleted: ' + b.inspect)
