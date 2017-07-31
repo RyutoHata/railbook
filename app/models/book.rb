@@ -14,18 +14,18 @@ class Book < ActiveRecord::Base
 
 
 
-=begin
+
   validates :isbn,
     presence: true,
-    uniqueness: true,
-    # uniqueness: { allow_blank: true },
-    length: { is: 17 },
-    # length: { is: 17 , allow_blank: true },
-    format: { with: /\A[0-9]{3}-[0-9]{1}-[0-9]{3,5}-[0-9]{4}-[0-9X]{1}\z/ }
+    # uniqueness: true,
+    uniqueness: { allow_blank: true },
+    # length: { is: 17 },
+    length: { is: 17 , allow_blank: true },
+    # format: { with: /\A[0-9]{3}-[0-9]{1}-[0-9]{3,5}-[0-9]{4}-[0-9X]{1}\z/ }
     # format: { with: /\A[0-9]{3}-[0-9]{1}-[0-9]{3,5}-[0-9]{4}-[0-9X]{1}\z/, allow_blank: true }
     # isbn: true
-    # isbn: { allow_old: true }
-=end
+    isbn: { allow_old: true }
+
 
 =begin
   validates :isbn,
@@ -34,27 +34,28 @@ class Book < ActiveRecord::Base
       message: '%{value}は一意でなければなりません' },
     length: { is: 17 , allow_blank: true,
       message: '%{value}は%{count}桁でなければなりません' },
-    format: { with: /\A[0-9]{3}-[0-9]{1}-[0-9]{3,5}-[0-9]{4}-[0-9X]{1}\z/,
-      allow_blank: true, message: '%{value}は正しい形式ではありません'}
+    # format: { with: /\A[0-9]{3}-[0-9]{1}-[0-9]{3,5}-[0-9]{4}-[0-9X]{1}\z/,
+    #   allow_blank: true, message: '%{value}は正しい形式ではありません'}
+    isbn: true
 =end
 
-  # validate :isbn_valid? 
+ validate :isbn_valid?
 
-=begin
+begin
   validates :title,
     presence: true,
     length: { minimum: 1, maximum: 100 }
-=end
+end
 
-  # validates :title, uniqueness: { scope: :publish }
+ validates :title, uniqueness: { scope: :publish }
 
-=begin
+begin
   validates :price,
     numericality: { only_integer: true, less_than: 10000 }
 
   validates :publish,
     inclusion:{ in: ['技術評論社', '翔泳社', '秀和システム', '日経BP社', 'ソシム'] }
-=end
+end
 
 
   # after_destroy :history_book
