@@ -250,7 +250,7 @@ end
   end
 
   def cache_counter
-    @user =User.find(1)
+    @user = User.find(1)
     render text: @user.reviews.size
   end
 
